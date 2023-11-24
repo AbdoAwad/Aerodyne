@@ -21,4 +21,13 @@ export class RestaurantService {
   async deleteRestaurant(id: string) {
     return this.restaurantModel.findByIdAndRemove(id).exec();
   }
+
+  async showRestaurant(id: string) {
+    const restaurants = await this.restaurantModel.find().exec();
+    const modifiedRestaurants = restaurants.map(restaurant => ({
+      ...restaurant.toObject(),
+      selected: restaurant._id.toString() === id
+    }));
+    return modifiedRestaurants;
+  }
 }

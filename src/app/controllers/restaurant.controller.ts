@@ -21,4 +21,9 @@ export class RestaurantController {
   async deleteRestaurant(@Param('id') id: string) {
     return this.restaurantService.deleteRestaurant(id);
   }
+
+  @Get(':id')
+  async showRestaurant(@Param('id') id: string) {
+    return this.restaurantService.showRestaurant(id);
+  }
 }
